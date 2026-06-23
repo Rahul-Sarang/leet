@@ -6,7 +6,6 @@ class Solution:
             if price < miniprice :
                 miniprice=price
             profit=price-miniprice
-            if profit>maxProfit:
-                maxProfit=profit
+            maxProfit = max(maxProfit, profit)
         return maxProfit  
             
