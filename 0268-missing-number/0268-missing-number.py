@@ -3,5 +3,4 @@ class Solution:
        n=len(nums)
        ETS=(n*(n+1))//2
        ATS=sum(nums)
-       num=ETS-ATS
-       return num
+       return ETS-ATS
