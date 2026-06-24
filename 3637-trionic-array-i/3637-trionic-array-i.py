@@ -9,7 +9,6 @@ class Solution:
         a=i   
         while i + 1 < n and nums[i]>nums[i+1]:
             i += 1
-
         if i == a or i == n - 1: 
             return False
         while i + 1 < n and nums[i]<nums[i+1]:
