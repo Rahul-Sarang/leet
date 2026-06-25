@@ -1,13 +1,11 @@
-class Solution(object):
-    def rob(self, nums):
-        dp = {}
-        def helper(i):
-            if i >= len(nums):
-                return 0
-            if i in dp:
-                return dp[i]
-            robCurrent = nums[i] + helper(i + 2)
-            skipCurrent = helper(i + 1)
-            dp[i] = max(robCurrent, skipCurrent)
-            return dp[i]
-        return helper(0)
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        x = 0
+        y = 0
+        i = 0
+        while i < len(nums):
+            current = max(x, y+ nums[i])
+            y = x
+            x = current
+            i += 1
+        return x
