@@ -1,13 +1,18 @@
-class Solution:
-    def rob(self, nums: List[int]) -> int:
-        prev2 = 0
-        prev1 = 0
+class Solution(object):
+    def rob(self, nums):
+        dp = {}
 
-        i = 0
-        while i < len(nums):
-            curr = max(prev1, prev2 + nums[i])
-            prev2 = prev1
-            prev1 = curr
-            i += 1
+        def helper(i):
+            if i >= len(nums):
+                return 0
 
-        return prev1
+            if i in dp:
+                return dp[i]
+
+            robCurrent = nums[i] + helper(i + 2)
+            skipCurrent = helper(i + 1)
+
+            dp[i] = max(robCurrent, skipCurrent)
+            return dp[i]
+
+        return helper(0)
