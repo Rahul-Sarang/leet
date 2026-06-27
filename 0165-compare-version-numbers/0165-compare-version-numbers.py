@@ -1,15 +1,25 @@
 class Solution:
     def compareVersion(self, version1: str, version2: str) -> int:
-        v1 = version1.split(".")
-        v2 = version2.split(".")
+        i, j = 0, 0
+        n1, n2 = len(version1), len(version2)
 
-        n = max(len(v1), len(v2))
+        while i < n1 or j < n2:
+            num1 = 0
+            while i < n1 and version1[i] != '.':
+                num1 = num1 * 10 + int(version1[i])
+                i += 1
 
-        for i in range(n):
-            num1 = int(v1[i]) if i < len(v1) else 0
-            num2 = int(v2[i]) if i < len(v2) else 0
+            num2 = 0
+            while j < n2 and version2[j] != '.':
+                num2 = num2 * 10 + int(version2[j])
+                j += 1
+
             if num1 < num2:
                 return -1
             elif num1 > num2:
                 return 1
+
+            i += 1
+            j += 1
+
         return 0
